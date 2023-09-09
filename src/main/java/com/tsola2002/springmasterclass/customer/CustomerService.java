@@ -23,12 +23,12 @@ public class CustomerService {
   }
 
 
-//  List<Customer> getCustomer() {
-//    return customerRepo.getCustomer();
-//  }
-
-  Customer getCustomer() {
-    return new Customer(1L, "Omatsola Issac Sobotie");
+  List<Customer> getCustomers() {
+    return customerRepo.getCustomers();
   }
+
+//  Customer getCustomer() {
+//    return new Customer(1L, "Omatsola Issac Sobotie");
+//  }
 
 }

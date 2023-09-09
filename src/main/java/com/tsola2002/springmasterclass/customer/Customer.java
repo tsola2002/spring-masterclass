@@ -19,6 +19,10 @@ public class Customer {
       return id;
     }
 
+  public Long getCustomerId() {
+    return id;
+  }
+
     public String getName() {
       return name;
     }

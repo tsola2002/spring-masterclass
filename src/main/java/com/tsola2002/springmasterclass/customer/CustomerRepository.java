@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 public class CustomerRepository implements CustomerRepo {
 
   @Override
-  public List<Customer> getCustomer() {
+  public List<Customer> getCustomers() {
     // TODO connect to real db
     return Collections.emptyList();
   }

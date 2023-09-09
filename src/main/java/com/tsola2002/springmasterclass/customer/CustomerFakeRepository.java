@@ -10,8 +10,9 @@ import org.springframework.stereotype.Repository;
 //@Primary
 public class CustomerFakeRepository implements CustomerRepo {
 
+
   @Override
-  public List<Customer> getCustomer() {
+  public List<Customer> getCustomers() {
     return Arrays.asList(
         new Customer(1L, "Omatsola"),
         new Customer(2L, "Austin")
