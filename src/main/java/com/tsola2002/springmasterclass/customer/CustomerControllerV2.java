@@ -1,5 +1,6 @@
 package com.tsola2002.springmasterclass.customer;
 
+import java.util.Collections;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -13,8 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 // CONVERTS CLASS INTO REST API
 @RestController
-@RequestMapping(path = "/api/v1/customer")
-public class CustomerController {
+@RequestMapping(path = "/api/v2/customer")
+public class CustomerControllerV2 {
 
   //private final CustomerRepo customerRepo;
   private final CustomerService customerService;
@@ -22,7 +23,7 @@ public class CustomerController {
 
 
   @Autowired
-  public CustomerController( CustomerService customerService) {
+  public CustomerControllerV2( CustomerService customerService) {
     this.customerService = customerService;
   }
 
@@ -33,14 +34,26 @@ public class CustomerController {
 //    return customerService.getCustomer();
 //  }
 
-  @GetMapping(value = "all")
-  List<Customer> getCustomer(){
-    return customerService.getCustomers();
+  @GetMapping(path = "{customerId}")
+  Customer getCustomer(
+      @PathVariable("customerId")
+      Long id){
+
+    //return customerService.getCustomers();
+    //    return Collections.singletonList(
+    //        new Customer(2L, "V2", "")
+    //    );
+
+    return customerService.getCustomers()
+          .stream()
+          .filter(c -> c.getId().equals(id))
+          .findFirst()
+          .orElseThrow(() -> new IllegalStateException("customer not found"));
   }
 
   //@RequestBody take a Json payload and maps it to a customer
   @PostMapping
-  void creatNewCustomer(
+  void createNewCustomer(
       @RequestBody
       Customer customer) {
     System.out.println("POST REQUEST...");

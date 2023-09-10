@@ -2,12 +2,14 @@ package com.tsola2002.springmasterclass.customer;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 public class Customer {
 
 
   private final Long id;
   private final String name;
+  @JsonProperty(access = Access.WRITE_ONLY)
   private final String password;
 
 
